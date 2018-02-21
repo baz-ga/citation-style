@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--<?xml-model href="schema-1.0.1/csl.rnc" type="application/relax-ng-compact-syntax"?>-->
+<?xml-model href="schema-1.0.1/csl.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<style xmlns="http://purl.org/net/xbiblio/csl">
+  <info>
+    <title>BAZ-GA Citation Style</title>
+    <id>http://www.bazga.de/schema/citation</id>
+    <link href="http://www.bazga.de/schema/citation" rel="self"/>
+    <link href="" rel="documentation"/>
+    <link href="http://www.zotero.org/styles/iso690-note-de" rel="template"/>
+    <updated>2018-02-21T09:56:00</updated>
+    <!--<author>
+      <name>Benjamin W. Bohl</name>
+    </author>-->
+    <rights>All rights reserved.</rights>
+  </info>
+  <!--<bibliography>
+    <layout></layout>
+  </bibliography>-->
+  <!-- item types:
+       book
+       book section
+       conference paper
+       encyclopedia article
+       journal article
+       thesis
+       web page
+  -->
+  <locale>
+    <terms>
+      <term name="volume">Bd.</term>
+    </terms>
+  </locale>
+  <macro name="author">
+    <names variable="author">
+      <name delimiter="; " form="long" name-as-sort-order="all">
+        <name-part name="family"/>
+      </name>
+    </names>
+  </macro>
+  <macro name="date">
+    <if variable="issued">
+      <date variable="issued">
+        <date-part name="year" form="long"/>
+      </date>
+    </if>
+  </macro>
+  <macro name="responsibility">
+    <choose>
+      <if variable="author editor" match="any">
+        <text macro="author"/>
+      </if>
+    </choose>
+  </macro>
+  <macro name="title">
+    <choose>
+      <if type="book">
+        <text variable="title" font-style="italic" suffix=", "/>
+      </if>
+      <else-if type="chapter">
+        <text variable="container-title" font-style="italic" suffix=", "/>
+      </else-if>
+      <!--<else-if type="paper-conference article-journal"></else-if>-->
+      <else>
+        <text value="ERROR"/>
+      </else>
+    </choose>
+  </macro>
+  <macro name="publication">
+    <choose>
+      <if type="book">
+        <group delimiter=" ">
+          <text variable="publisher-place"/>
+          <group>
+            <text variable="issue" vertical-align="sup"/>
+            <text macro="date"/>
+          </group>
+        </group>
+        <group prefix=" (" suffix=")" delimiter=" ">
+          <text variable="collection-title"/>
+          <text variable="collection-number"/>
+        </group>
+      </if>
+    </choose>
+  </macro>
+  <macro name="volume">
+    <group delimiter=" " suffix=": ">
+      <text term="volume"/>
+      <text variable="volume"/>
+    </group>
+  </macro>
+  <citation>
+    <layout>
+      <text macro="responsibility" suffix=": "/>
+      <group delimiter=", ">
+        <text macro="title"/>
+        <text macro="volume"/>
+      </group>
+      <text macro="publication"/>
+    </layout>
+  </citation>
+  <bibliography>
+    <layout>
+      <text macro="responsibility"/>
+    </layout>
+  </bibliography>
+</style>
