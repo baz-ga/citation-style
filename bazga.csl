@@ -57,10 +57,10 @@
   <macro name="title">
     <choose>
       <if type="book">
-        <text variable="title" font-style="italic" suffix=", "/>
+        <text variable="title" font-style="italic"/>
       </if>
       <else-if type="chapter">
-        <text variable="container-title" font-style="italic" suffix=", "/>
+        <text variable="container-title" font-style="italic"/>
       </else-if>
       <!--<else-if type="paper-conference article-journal"></else-if>-->
       <else>
@@ -70,7 +70,7 @@
   </macro>
   <macro name="publication">
     <choose>
-      <if type="book">
+      <if type="book chapter" match="any">
         <group delimiter=" ">
           <text variable="publisher-place"/>
           <group>
@@ -90,6 +90,7 @@
       <text term="volume"/>
       <text variable="volume"/>
     </group>
+    <text variable="title" font-style="italic" suffix=", "/>
   </macro>
   <citation>
     <layout>
