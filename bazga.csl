@@ -39,11 +39,13 @@
     </names>
   </macro>
   <macro name="date">
-    <if variable="issued">
-      <date variable="issued">
-        <date-part name="year" form="long"/>
-      </date>
-    </if>
+    <choose>
+      <if variable="issued">
+        <date variable="issued">
+          <date-part name="year" form="long"/>
+        </date>
+      </if>
+    </choose>
   </macro>
   <macro name="responsibility">
     <choose>
