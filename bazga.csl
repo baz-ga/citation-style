@@ -28,6 +28,7 @@
   -->
   <locale xml:lang="de">
     <terms>
+      <term name="editor" form="verb-short">hrsg. von</term>
     </terms>
   </locale>
   <macro name="author">
