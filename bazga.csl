@@ -28,7 +28,6 @@
   -->
   <locale xml:lang="de">
     <terms>
-      <term name="volume">Bd.</term>
     </terms>
   </locale>
   <macro name="author">
