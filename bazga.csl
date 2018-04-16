@@ -47,6 +47,20 @@
       </if>
     </choose>
   </macro>
+  <macro name="editor">
+    <!--<choose>
+      <if type="book" variable="author"></if>
+      <else>-->
+    <!--<text value="hrsg. von "/>-->
+    <group delimiter=" ">
+      <text term="editor" form="verb-short"/>
+      <names variable="editor">
+        <name and="text" delimiter=", " delimiter-precedes-last="never" />
+      </names>
+    </group>
+      <!--</else>
+    </choose>-->
+  </macro>
   <macro name="responsibility">
     <choose>
       <if variable="author editor" match="any">
@@ -105,6 +119,7 @@
             </group>
           </if>
         </choose>
+        <text macro="editor"/>
         <text macro="volume"/>
         <text macro="publication"/>
       </group>
