@@ -98,8 +98,8 @@
       <group delimiter=", ">
         <text macro="title"/>
         <text macro="volume"/>
+        <text macro="publication"/>
       </group>
-      <text macro="publication"/>
     </layout>
   </citation>
   <bibliography>
