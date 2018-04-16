@@ -70,11 +70,41 @@
   </macro>
   <macro name="title">
     <choose>
-      <if type="book">
-        <text variable="title" font-style="italic"/>
+      <if type="chapter">
+        <!--<text value="TITLE.CHAPTER"/>-->
+        <choose>
+          <if variable="editor author" match="all">
+            <!--<text value="EDITOR-AUTHOR"/>-->
+            <text variable="title" quotes="true" /><!-- font-style="italic" -->
+          </if>
+          <else-if variable="editor" match="all">
+            <!--<text value="EDITOR"/>-->
+            <text variable="container-title" font-style="italic"/>
+          </else-if>
+          <else-if variable="author" match="all">
+            <!--<text value="EDITOR"/>-->
+            <text variable="container-title" font-style="italic"/>
+          </else-if>
+        </choose>
       </if>
-      <else-if type="chapter">
-        <text variable="container-title" font-style="italic"/>
+      <else-if type="book">
+        <text variable="title" font-style="italic"/>
+      </else-if>
+      <else-if type="article-journal article-newspaper paper-conference" match="any">
+        <text variable="title" quotes="true"/>
+      </else-if>
+      <else-if type="entry-encyclopedia">
+        <text value="Art." suffix=" "/>
+        <text variable="title" prefix="„" suffix="“"/>
+      </else-if>
+      <else-if type="personal_communication">
+        <group delimiter=" ">
+          <text term="letter"/>
+          <text term="from"/>
+          <text macro="author"/>
+          <text macro="to"/>
+          <text variable="title"/>
+        </group>
       </else-if>
       <!--<else-if type="paper-conference article-journal"></else-if>-->
       <else>
