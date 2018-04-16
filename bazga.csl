@@ -108,7 +108,7 @@
       </else-if>
       <!--<else-if type="paper-conference article-journal"></else-if>-->
       <else>
-        <text value="ERROR"/>
+        <text value="STYLE TITLE ERROR"/>
       </else>
     </choose>
   </macro>
