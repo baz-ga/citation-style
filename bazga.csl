@@ -26,7 +26,7 @@
        thesis
        web page
   -->
-  <locale xml:lang="de-DE">
+  <locale xml:lang="de">
     <terms>
       <term name="volume">Bd.</term>
     </terms>
