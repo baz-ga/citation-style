@@ -93,7 +93,7 @@
     <text variable="title" font-style="italic" suffix=", "/>
   </macro>
   <citation>
-    <layout>
+    <layout delimiter="; ">
       <text macro="responsibility" suffix=": "/>
       <group delimiter=", ">
         <text macro="title"/>
