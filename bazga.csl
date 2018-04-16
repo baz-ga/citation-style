@@ -97,6 +97,14 @@
       <text macro="responsibility" suffix=": "/>
       <group delimiter=", ">
         <text macro="title"/>
+        <choose>
+          <if type="book">
+            <group delimiter=" ">
+              <text variable="number-of-volumes"/>
+            <text term="volume" form="short" plural="true"/>
+            </group>
+          </if>
+        </choose>
         <text macro="volume"/>
         <text macro="publication"/>
       </group>
