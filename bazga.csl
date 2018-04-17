@@ -193,6 +193,34 @@
           <text variable="collection-number"/>
         </group>
       </if>
+      <else-if type="article-journal article-newspaper paper-conference entry-encyclopedia" match="any">
+        <group delimiter=", ">
+          <group>
+            <text term="in" suffix=": "/>
+            <text variable="container-title" font-style="italic"/>
+          </group>
+          <choose>
+            <if type="article-journal">
+              <group delimiter=" ">
+                <group delimiter=": ">
+                  <choose>
+                    <if is-numeric="issue"/>
+                    <else>
+                      <text variable="issue"/>
+                    </else>
+                  </choose>
+                  <text variable="volume" font-style="italic"/>
+                </group>
+                <text macro="editor"/>
+                <text macro="publisher"/>
+              </group>
+            </if>
+            <else-if type="article-newspaper">
+              <text macro="date" prefix=", "/>
+            </else-if>
+          </choose>
+        </group>
+      </else-if>
     </choose>
   </macro>
   <macro name="volume">
