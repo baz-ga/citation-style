@@ -31,6 +31,7 @@
   <locale xml:lang="de">
     <terms>
       <term name="editor" form="verb-short">hrsg. von</term>
+      <term name="retrieved">abgerufen am</term>
     </terms>
   </locale>
   <macro name="author">
