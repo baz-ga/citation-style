@@ -170,13 +170,23 @@
   </macro>
   <macro name="publication">
     <choose>
-      <if type="book chapter" match="any">
-        <group delimiter=" ">
-          <text variable="publisher-place"/>
-          <group>
-            <text variable="issue" vertical-align="sup"/>
-            <text macro="date"/>
-          </group>
+      <if type="book chapter" match="all">
+        <group delimiter=", ">
+          <choose>
+            <if variable="container-title editor" match="all">
+              <group delimiter=" ">
+                <text term="in" suffix=": "/>
+                <text variable="container-title" font-style="italic"/>
+              </group>
+            </if>
+          </choose>
+          <text macro="editor"/>
+          <choose><!-- TODO -->
+            <if variable="note">
+              <text variable="note"/>
+            </if>
+          </choose>
+          <text macro="publisher"/>
         </group>
         <group prefix=" (" suffix=")" delimiter=" ">
           <text variable="collection-title"/>
