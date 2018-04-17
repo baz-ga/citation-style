@@ -291,7 +291,7 @@
           <if type="book">
             <group delimiter=" ">
               <text variable="number-of-volumes"/>
-            <text term="volume" form="short" plural="true"/>
+              <text term="volume" form="short" plural="true"/>
             </group>
           </if>
         </choose>
