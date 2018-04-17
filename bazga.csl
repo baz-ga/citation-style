@@ -5,14 +5,16 @@
   <info>
     <title>BAZ-GA Citation Style</title>
     <id>http://www.bazga.de/schema/citation</id>
-    <link href="http://www.bazga.de/schema/citation" rel="self"/>
-    <link href="" rel="documentation"/>
-    <link href="http://www.zotero.org/styles/iso690-note-de" rel="template"/>
-    <updated>2018-02-21T09:56:00</updated>
-    <!--<author>
+    <link href="https://github.com/baz-ga/citation-style/bazga.csl" rel="self"/>
+    <link href="https://github.com/baz-ga/citation-style/blob/master/docs/README.md" rel="documentation"/>
+    <updated>2018-04-17T02:18:00</updated>
+    <author>
       <name>Benjamin W. Bohl</name>
-    </author>-->
-    <rights>All rights reserved.</rights>
+    </author>
+    <!--<published>@@DATE.PUBLICATION@@</published>-->
+    <rights>Veröffentlicht durch die Bernd Alois Zimmermann-Gesamtausgabe, gefördert im Akademienprogramm der Akademiunion unter Trägerschaft derder Akademie der Wissenschaften und der Literatur, Mainz und der Berlin-Brandenburgischen Akademie der Wissenschaften.</rights>
+    <category citation-format="note"/>
+    <category field="humanities"/>
   </info>
   <!--<bibliography>
     <layout></layout>
