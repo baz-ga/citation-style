@@ -156,6 +156,12 @@
           <text variable="title"/>
         </group>
       </else-if>
+      <else-if type="thesis">
+        <text variable="title" font-style="italic"/>
+      </else-if>
+      <else-if type="webpage">
+        <text variable="title" quotes="true"/>
+      </else-if>
       <!--<else-if type="paper-conference article-journal"></else-if>-->
       <else>
         <text value="STYLE TITLE ERROR"/>
