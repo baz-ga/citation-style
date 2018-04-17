@@ -168,6 +168,9 @@
       </else>
     </choose>
   </macro>
+  <macro name="to">
+    <text value="an"/>
+  </macro>
   <macro name="publication">
     <choose>
       <if type="book chapter" match="all">
