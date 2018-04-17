@@ -250,9 +250,21 @@
     </group>
   </macro>
   <macro name="volume">
-    <group delimiter=" " suffix=": ">
-      <text term="volume"/>
-      <text variable="volume"/>
+    <choose>
+      <if type="article-journal"/>
+      <else>
+        <group delimiter=" " suffix=": ">
+          <text term="volume" form="short"/>
+          <text variable="volume"/>
+        </group>
+      </else>
+    </choose>
+    <choose>
+      <if type="chapter" match="all">
+        <text variable="title" font-style="italic"/>
+      </if>
+    </choose>
+  </macro>
     </group>
     <text variable="title" font-style="italic" suffix=", "/>
   </macro>
