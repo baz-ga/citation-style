@@ -294,6 +294,9 @@
               <text term="volume" form="short" plural="true"/>
             </group>
           </if>
+          <else-if type="thesis">
+            <text variable="genre"/>
+          </else-if>
         </choose>
         <text macro="editor"/>
         <text macro="volume"/>
