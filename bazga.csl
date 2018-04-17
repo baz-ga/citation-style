@@ -265,8 +265,22 @@
       </if>
     </choose>
   </macro>
+  <macro name="online">
+    <group delimiter=", ">
+      <choose>
+        <if variable="DOI">
+          <text variable="DOI"/>
+        </if>
+        <else>
+          <text variable="URL"/>
+        </else>
+      </choose>
+      <group delimiter=" ">
+        <text term="retrieved"/>
+        <date variable="accessed" date-parts="year-month-day" form="numeric"></date>
+      </group>
     </group>
-    <text variable="title" font-style="italic" suffix=", "/>
+    
   </macro>
   <citation>
     <layout delimiter="; ">
