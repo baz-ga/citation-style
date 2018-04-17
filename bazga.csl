@@ -129,7 +129,11 @@
           </else-if>
           <else-if variable="author" match="all">
             <!--<text value="EDITOR"/>-->
-            <text variable="container-title" font-style="italic"/>
+            <group delimiter=", ">
+              <text variable="container-title" font-style="italic"/>
+              <text macro="volume"/>
+            </group>
+            
           </else-if>
         </choose>
       </if>
