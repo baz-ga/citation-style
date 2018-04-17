@@ -35,11 +35,18 @@
     </terms>
   </locale>
   <macro name="author">
-    <names variable="author">
-      <name delimiter="; " form="long" name-as-sort-order="all">
-        <name-part name="family"/>
-      </name>
-    </names>
+    <choose>
+      <if type="personal_communication">
+        <names variable="author">
+          <name delimiter=", " form="long" and="text"/>
+        </names>
+      </if>
+      <else><!-- TODO o.A. -->
+        <names variable="author">
+          <name delimiter="; " form="long" name-as-sort-order="all"/>
+        </names>
+      </else>
+    </choose>
   </macro>
   <macro name="date">
     <choose>
