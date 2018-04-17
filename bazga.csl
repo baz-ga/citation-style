@@ -221,6 +221,12 @@
           </choose>
         </group>
       </else-if>
+      <else-if type="thesis">
+        <group delimiter=", ">
+          <text variable="publisher"/>
+          <text macro="date"/>
+        </group>
+      </else-if>
     </choose>
   </macro>
   <macro name="volume">
