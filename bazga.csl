@@ -299,6 +299,7 @@
           </else-if>
         </choose>
         <text macro="publication"/>
+        <text macro="online"/>
       </group>
     </layout>
   </citation>
