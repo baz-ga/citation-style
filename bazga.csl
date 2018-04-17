@@ -81,9 +81,37 @@
   </macro>
   <macro name="responsibility">
     <choose>
-      <if variable="author editor" match="any">
+      <if type="personal_communication"/>
+      <else-if type="book">
         <text macro="author"/>
-      </if>
+      </else-if>
+      <else-if type="chapter">
+        <text macro="author"/>
+      </else-if>
+      <else-if type="article-journal">
+        <text macro="author"/>
+      </else-if>
+      <!--<else-if variable="author editor" match="any">
+        <text macro="author"/>
+      </else-if>-->
+      <else-if type="thesis">
+        <text macro="author"/>
+      </else-if>
+      <else-if type="paper-conference">
+        <text macro="author"/>
+      </else-if>
+      <else-if type="article-newspaper">
+        <text macro="author"/>
+      </else-if>
+      <else-if type="entry-encyclopedia">
+        <text macro="author"/>
+      </else-if>
+      <else-if type="webpage">
+        <!--<text macro="author"/>-->
+      </else-if>
+      <else>
+        <text value="STYLE RESPONSIBILITY ERROR"/>
+      </else>
     </choose>
   </macro>
   <macro name="title">
