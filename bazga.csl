@@ -227,6 +227,9 @@
           <text macro="date"/>
         </group>
       </else-if>
+      <else>
+        <text value="ERROR MACRO PUBLICATION"/>
+      </else>
     </choose>
   </macro>
   <macro name="volume">
