@@ -236,6 +236,18 @@
       <text variable="page"/>
     </group>
   </macro>
+  <macro name="publisher">
+    <group delimiter=" ">
+      <text variable="publisher-place"/>
+      <group>
+        <choose>
+          <if is-numeric="issue">
+            <text variable="issue" vertical-align="sup"/>
+          </if>
+        </choose>
+        <text macro="date"/>
+      </group>
+    </group>
   </macro>
   <macro name="volume">
     <group delimiter=" " suffix=": ">
