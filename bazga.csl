@@ -48,6 +48,20 @@
       </else>
     </choose>
   </macro>
+  <macro name="recipient">
+    <choose>
+      <if type="personal_communication">
+        <names variable="recipient">
+          <name delimiter=", " form="long" and="text"/>
+        </names>
+      </if>
+      <else><!-- TODO o.A. -->
+        <names variable="author">
+          <name delimiter="; " form="long" name-as-sort-order="all"/>
+        </names>
+      </else>
+    </choose>
+  </macro>
   <macro name="date">
     <choose>
       <if variable="issued">
@@ -56,6 +70,10 @@
             <date variable="issued" form="numeric" date-parts="year-month-day">
             </date>
           </if>
+          <else-if type="personal_communication">
+            <date variable="issued" form="numeric" date-parts="year-month-day">
+            </date>
+          </else-if>
           <else>
             <date variable="issued">
               <date-part name="year" form="long"/>
@@ -148,12 +166,25 @@
         <text variable="title" prefix="„" suffix="“"/>
       </else-if>
       <else-if type="personal_communication">
-        <group delimiter=" ">
-          <text term="letter"/>
-          <text term="from"/>
-          <text macro="author"/>
-          <text macro="to"/>
-          <text variable="title"/>
+        <group delimiter=", ">
+          <group delimiter=" ">
+            <text term="letter"/>
+            <text term="from"/>
+            <text macro="author"/>
+            <text macro="to"/>
+            <text macro="recipient"/>
+          </group>
+          <group delimiter=" ">
+            <text variable="event-place"/>
+            <text macro="date"/>
+          </group>
+          <group>
+            <text variable="genre"/>
+          </group>
+          <group delimiter=" ">
+            <text variable="archive"/>
+            <text variable="call-number"/>
+          </group>
         </group>
       </else-if>
       <else-if type="thesis">
