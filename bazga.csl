@@ -316,8 +316,50 @@
     </group>
     
   </macro>
-  <citation>
+  <citation near-note-distance="1">
     <layout delimiter="; ">
+      <choose>
+        <if position="first">
+          <text macro="responsibility" suffix=": "/>
+          <group delimiter=", ">
+            <text macro="title"/>
+            <choose>
+              <if type="book">
+                <group delimiter=" ">
+                  <text variable="number-of-volumes"/>
+                  <text term="volume" form="short" plural="true"/>
+                </group>
+              </if>
+              <else-if type="thesis">
+                <text variable="genre"/>
+              </else-if>
+            </choose>
+            <text macro="publication"/>
+            <text macro="location"/>
+            <text macro="online"/>
+          </group>
+        </if>
+        <else-if position="ibid-with-locator">
+          <group delimiter=", ">
+            <text term="ibid"/>
+            <text macro="location"/>
+          </group>
+        </else-if>
+        <else-if position="subsequent">
+          <text term="ibid"/>
+        </else-if>
+        <else>
+          <text value="POSITION ERROR"/>
+        </else>
+      </choose>
+    </layout>
+  </citation>
+  <bibliography hanging-indent="true">
+    <sort>
+      <key macro="responsibility"/>
+      <key macro="title"/>
+    </sort>
+    <layout>
       <text macro="responsibility" suffix=": "/>
       <group delimiter=", ">
         <text macro="title"/>
@@ -335,11 +377,6 @@
         <text macro="publication"/>
         <text macro="online"/>
       </group>
-    </layout>
-  </citation>
-  <bibliography>
-    <layout>
-      <text macro="responsibility"/>
     </layout>
   </bibliography>
 </style>
