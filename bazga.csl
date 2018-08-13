@@ -265,10 +265,26 @@
         <text value="ERROR MACRO PUBLICATION"/>
       </else>
     </choose>
-    <group prefix=", " delimiter=" ">
+    <!--<group prefix=", " delimiter=" ">
       <text term="page" form="short"/>
       <text variable="page"/>
-    </group>
+    </group>-->
+  </macro>
+  <macro name="location">
+    <choose>
+      <if variable="locator">
+        <group>
+          <label variable="locator" form="short" suffix=" "/>
+          <text variable="locator"/>
+        </group>
+      </if>
+      <else>
+        <group>
+          <text term="page" form="short" suffix=" "/>
+          <text variable="page"/>
+        </group>
+      </else>
+    </choose>
   </macro>
   <macro name="publisher">
     <group delimiter=" ">
