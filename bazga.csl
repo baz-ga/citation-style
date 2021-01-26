@@ -363,17 +363,34 @@
             <text macro="online"/>
           </group>
         </if>
-        <else-if position="ibid-with-locator">
+        <!--<else-if position="ibid-with-locator">
           <group delimiter=", ">
             <text term="ibid"/>
             <text macro="location"/>
           </group>
-        </else-if>
-        <else-if position="subsequent">
+        </else-if>-->
+        <!--<else-if position="ibid">
           <text term="ibid"/>
-        </else-if>
+        </else-if>-->
         <else>
-          <text value="POSITION ERROR"/>
+          <text macro="responsibility" suffix=": "/>
+          <group delimiter=", ">
+            <text macro="title"/>
+            <!--<choose>
+              <if type="book">
+                <group delimiter=" ">
+                  <text variable="number-of-volumes"/>
+                  <text term="volume" form="short" plural="true"/>
+                </group>
+              </if>
+              <else-if type="thesis">
+                <text variable="genre"/>
+              </else-if>
+            </choose>-->
+            <!--<text macro="publication"/>-->
+            <text macro="location"/>
+            <text macro="online"/>
+          </group>
         </else>
       </choose>
     </layout>
