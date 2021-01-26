@@ -28,7 +28,7 @@
        thesis
        web page
   -->
-  <locale xml:lang="de">
+  <locale xml:lang="de-DE">
     <terms>
       <term name="editor" form="verb-short">hrsg. von</term>
       <term name="retrieved">abgerufen am</term>
