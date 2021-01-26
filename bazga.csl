@@ -266,6 +266,9 @@
           <text macro="date"/>
         </group>
       </else-if>
+      <else-if type="personal_communication">
+          <text value="TODO MACRO PUBLICATION"/>
+      </else-if>
       <else>
         <text value="ERROR MACRO PUBLICATION"/>
       </else>
