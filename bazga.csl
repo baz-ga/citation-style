@@ -158,7 +158,7 @@
       </else-if>
       <else-if type="entry-encyclopedia">
         <text value="Art." suffix=" "/>
-        <text variable="title" prefix="„" suffix="“"/>
+        <text variable="title" quotes="true"/>
       </else-if>
       <else-if type="personal_communication">
         <group delimiter=", ">
