@@ -185,7 +185,7 @@
           <group>
             <text variable="genre"/>
           </group>
-          <group delimiter=" ">
+          <group delimiter=", ">
             <text variable="archive"/>
             <text variable="call-number"/>
           </group>
