@@ -32,6 +32,10 @@
     <terms>
       <term name="editor" form="verb-short">hrsg. von</term>
       <term name="retrieved">abgerufen am</term>
+      <term name="open-quote">»</term>
+      <term name="close-quote">«</term>
+      <term name="open-inner-quote">›</term>
+      <term name="close-inner-quote">‹</term>
     </terms>
   </locale>
   <macro name="author">
