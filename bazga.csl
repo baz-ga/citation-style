@@ -88,18 +88,12 @@
     </choose>
   </macro>
   <macro name="editor">
-    <!--<choose>
-      <if type="book" variable="author"></if>
-      <else>-->
-    <!--<text value="hrsg. von "/>-->
     <group delimiter=" ">
       <text term="editor" form="verb-short"/>
       <names variable="editor">
         <name and="text" delimiter=", " delimiter-precedes-last="never" />
       </names>
     </group>
-      <!--</else>
-    </choose>-->
   </macro>
   <macro name="responsibility">
     <choose>
@@ -113,9 +107,6 @@
       <else-if type="article-journal">
         <text macro="author"/>
       </else-if>
-      <!--<else-if variable="author editor" match="any">
-        <text macro="author"/>
-      </else-if>-->
       <else-if type="thesis">
         <text macro="author"/>
       </else-if>
@@ -272,6 +263,10 @@
       <else>
         <text value="ERROR MACRO PUBLICATION"/>
       </else>
+      <!--<else-if type="book" variable="editor" match="all">
+        <text value="hrsg. von "/>
+        <text value="editor"/>
+      </else-if>-->
     </choose>
     <!--<group prefix=", " delimiter=" ">
       <text term="page" form="short"/>
@@ -340,6 +335,14 @@
     </group>
     
   </macro>
+  <!--<macro name="number-of-volumes">
+    <choose>
+      <if variable="number-of-volumes">
+        <text variable="number-of-volumes"/>
+        <text term="number-of-volumes"/>
+      </if>
+    </choose>
+  </macro>-->
   <citation near-note-distance="1">
     <layout delimiter="; ">
       <choose>
@@ -378,7 +381,7 @@
             <text macro="title"/>
             <!--<choose>
               <if type="book">
-                <group delimiter=" ">
+                <group delimiter=" ">h
                   <text variable="number-of-volumes"/>
                   <text term="volume" form="short" plural="true"/>
                 </group>
