@@ -187,6 +187,7 @@
           </group>
           <group delimiter=", ">
             <text variable="archive"/>
+            <text variable="archive_location"/>
             <text variable="call-number"/>
           </group>
         </group>
