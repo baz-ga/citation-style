@@ -13,27 +13,14 @@
     </author>
     <!--<published>@@DATE.PUBLICATION@@</published>-->
     <rights>Veröffentlicht durch die Bernd Alois Zimmermann-Gesamtausgabe, gefördert im Akademienprogramm der Akademiunion unter Trägerschaft derder Akademie der Wissenschaften und der Literatur, Mainz und der Berlin-Brandenburgischen Akademie der Wissenschaften. All rights reserved.</rights>
-    <summary>Der BAZ-GA Zitationsstil ist für die Ausgabe der Zotero-spezifischen Lieraturerfassungsrichtlinien der BAZ-GA entwickelt und unsterstützt derzeit folgende Zotero-Eintragsarten: Buch, Buchteil, Dissertation, Enzyklopädieartikel, Zeitschriftenartikel.
-      
-      Folgende Aspekte der BAZ-GA Richtlinien für Literaturangaben werden noch nicht unterstützt:
-        - Fußnoten
-        - Eigene Felder:
-        -- editor-prefix
-        -- editor-suffix
-        - Auslassung des Autornamens bei von fremder Hand publizierten Werken, sofern der Autor zu Beginn des Titels der Publikation genannt wird.
-        - Eintragstypen:
-        -- Brief
-        -- Manuskript
-        -- Tonaufnahme
-        -- Videoaufnahme
-        -- Zeitungsartikel
-        -- Webseite (nur rudimentär)
-        
-      Inhaltlich zu klären:
-        - Sortierreihenfolge
-    </summary>
+    <summary>Der BAZ-GA Zitationsstil ist für die Ausgabe der Zotero-spezifischen Lieraturerfassungsrichtlinien der BAZ-GA entwickelt und unsterstützt derzeit folgende Zotero-Eintragsarten: Buch, Buchteil, Dissertation, Enzyklopädieartikel, Zeitschriftenartikel. Folgende Aspekte der BAZ-GA Richtlinien für Literaturangaben werden noch nicht unterstützt: - Fußnoten - Eigene Felder: -- editor-prefix -- editor-suffix - Auslassung des Autornamens bei von fremder Hand publizierten Werken, sofern der Autor zu Beginn des Titels der Publikation genannt wird. - Eintragstypen: -- Brief -- Manuskript -- Tonaufnahme -- Videoaufnahme -- Zeitungsartikel -- Webseite (nur rudimentär) Inhaltlich zu klären: - Sortierreihenfolge </summary>
     <category citation-format="note" />
     <category field="humanities" />
+    <!-- TODO
+      - vor Reihentitel kein Komma
+      - kein Strichpunkt bei von im Namen
+      - kein komma zwischen Zeitschriftentitel und Ausgabe
+    -->
   </info>
   <locale xml:lang="de-DE">
     <terms>
@@ -214,20 +201,31 @@
     </choose>
   </macro>
   <macro name="locator">
-    <choose>
-      <if variable="locator">
-        <group>
-          <label variable="locator" form="short" suffix=" " />
-          <text variable="locator" />
-        </group>
-      </if>
-      <else>
-        <group>
-          <text term="page" form="short" suffix=" " />
-          <text variable="page" />
-        </group>
-      </else>
-    </choose>
+    <group delimiter=", ">
+      <choose>
+        <if variable="locator">
+          <group>
+            <label variable="locator" form="short" suffix=" " />
+            <text variable="locator" />
+          </group>
+        </if>
+        <else>
+          <group>
+            <choose>
+              <if variable="page" is-numeric="page" match="all">
+                <text term="page" form="short" suffix=" " />
+                <text variable="page" />
+              </if>
+              <else-if variable="page">
+                <!--<text term="column" form="short" />-->
+                <text variable="page" />
+              </else-if>
+            </choose>
+          </group>
+        </else>
+      </choose>
+      <text macro="online" />
+    </group>
   </macro>
   <macro name="volume">
     <choose>
@@ -261,87 +259,93 @@
       </choose>
       <group delimiter=" ">
         <text term="retrieved" />
-        <date variable="accessed" date-parts="year-month-day" form="numeric" />
+        <date variable="accessed" delimiter=".">
+          <!--  date-parts="year-month-day" form="numeric" -->
+          <date-part name="day" form="numeric" />
+          <date-part name="month" form="numeric" />
+          <date-part name="year" form="long" />
+        </date>
       </group>
     </group>
   </macro>
-  <citation near-note-distance="1">
-    <layout delimiter="; ">
-      <text value="TODO" />
-    </layout>
-  </citation>
-  <bibliography>
-    <!--<sort>
-            <key macro="responsibility"/>
-            <key macro="title"/>
-            <!-\- TODO Sortierung klären  -\->
-        </sort>-->
-    <layout>
-      <!-- object start -->
-      <text macro="responsibility" suffix=": " />
+  <macro name="full-entry">
+    <!-- object start -->
+    <text macro="responsibility" suffix=": " />
+    <group delimiter=", ">
+      <text macro="title" />
+      <choose>
+        <!-- ggf in title verschieben, sozusagen als title-suffix -->
+        <if type="thesis">
+          <group delimiter=", ">
+            <text variable="genre" />
+            <text variable="publisher" />
+            <!-- im Falle von thesis ist das die Universität -->
+          </group>
+        </if>
+      </choose>
+      <choose>
+        <if variable="number-of-volumes" match="any">
+          <!-- Band eines mehrbändigen Werkes soll hier keine erneute Angabe haben -->
+          <choose>
+            <if type="chapter" variable="container-title number-of-volumes volume" match="all">
+              <!-- einer von mehreren Bänden (book section) -->
+              <!-- TODO Band ohne eigenständgem Titel -->
+              <group delimiter=": ">
+                <group delimiter=" ">
+                  <text term="volume" form="short" />
+                  <text variable="volume" />
+                </group>
+                <text variable="title" font-style="italic" />
+              </group>
+            </if>
+            <else>
+              <group delimiter=" ">
+                <text variable="number-of-volumes" />
+                <text term="volume" form="short" plural="true" />
+              </group>
+            </else>
+          </choose>
+        </if>
+      </choose>
+      <!-- object end -->
+      <!-- container start -->
       <group delimiter=", ">
-        <text macro="title" />
         <choose>
-          <!-- ggf in title verschieben, sozusagen als title-suffix -->
-          <if type="thesis">
-            <group delimiter=" ">
-              <text variable="genre" />
-              <text variable="publisher" />
-              <!-- im Falle von thesis ist das die Universität -->
-            </group>
+          <if type="chapter" variable="container-title number-of-volumes volume" match="all">
+            <!-- Band eines mehrbändigen Werkes soll hier keine erneute Angabe haben -->
           </if>
+          <else-if type="article-journal chapter entry-encyclopedia" match="any">
+            <group delimiter=" ">
+              <text term="in" suffix=": " />
+              <text variable="container-title" font-style="italic" />
+            </group>
+          </else-if>
         </choose>
         <choose>
-          <if variable="number-of-volumes" match="any">
-            <!-- Band eines mehrbändigen Werkes soll hier keine erneute Angabe haben -->
-            <choose>
-              <if type="chapter" variable="container-title number-of-volumes volume" match="all">
-                <!-- einer von mehreren Bänden (book section) -->
-                <!-- TODO Band ohne eigenständgem Titel -->
-                <group delimiter=": ">
+          <if type="article-journal">
+            <group delimiter=" ">
+              <group delimiter=" ">
+                <group delimiter="/">
+                  <text variable="volume" />
+                  <text variable="issue" />
+                </group>
+                <text macro="date" prefix="(" suffix=")" />
+              </group>
+              <!--<text macro="editor" />-->
+              <!-- ?tatsächlich nie? -->
+            </group>
+          </if>
+          <else>
+            <group delimiter=", ">
+              <text macro="editor" />
+              <choose>
+                <if type="entry-encyclopedia">
                   <group delimiter=" ">
                     <text term="volume" form="short" />
                     <text variable="volume" />
                   </group>
-                  <text variable="title" font-style="italic" />
-                </group>
-              </if>
-              <else>
-                <group delimiter=" ">
-                  <text variable="number-of-volumes" />
-                  <text term="volume" form="short" plural="true" />
-                </group>
-              </else>
-            </choose>
-          </if>
-        </choose>
-        <!-- object end -->
-        <!-- container start -->
-        <group delimiter=" ">
-          <choose>
-            <if type="chapter" variable="container-title number-of-volumes volume" match="all">
-              <!-- Band eines mehrbändigen Werkes soll hier keine erneute Angabe haben -->
-            </if>
-            <else-if type="article-journal chapter entry-encyclopedia" match="any">
-              <group delimiter=" ">
-                <text term="in" suffix=": " />
-                <text variable="container-title" font-style="italic" />
-              </group>
-            </else-if>
-          </choose>
-          <choose>
-            <if type="article-journal">
-              <group delimiter=" ">
-                <group delimiter=" ">
-                  <text variable="issue" />
-                  <text macro="date" prefix="(" suffix=")" />
-                  <text variable="volume" />
-                </group>
-                <text macro="editor" />
-              </group>
-            </if>
-            <else>
-              <text macro="editor" />
+                </if>
+              </choose>
               <group delimiter=" ">
                 <text variable="publisher-place" />
                 <group>
@@ -349,15 +353,59 @@
                   <text macro="date" />
                 </group>
               </group>
-            </else>
-          </choose>
-          <text macro="series" />
-        </group>
-        <text macro="online" />
-        <!-- TODO online in locator-macro veschieben -->
-        <text macro="locator" />
-        <!-- container end -->
+            </group>
+          </else>
+        </choose>
+        <text macro="series" />
       </group>
+      <!-- TODO online in locator-macro veschieben -->
+      <text macro="locator" />
+      <!-- container end -->
+    </group>
+  </macro>
+  <macro name="type">
+    <choose>
+      <if type="book" variable="author" match="all">
+        <text value="a" />
+      </if>
+      <else-if type="book" variable="editor" match="all">
+        <choose>
+          <if variable="author" match="none">
+            <text value="b" />
+          </if>
+        </choose>
+      </else-if>
+      <else-if type="chapter">
+        <text value="c" />
+      </else-if>
+      <else-if type="article-journal">
+        <text value="d" />
+      </else-if>
+      <else-if type="thesis">
+        <text value="e" />
+      </else-if>
+      <else-if type="entry-encyclopedia">
+        <text value="f" />
+      </else-if>
+      <else-if type="webpage">
+        <text value="g" />
+      </else-if>
+    </choose>
+  </macro>
+  <citation near-note-distance="1">
+    <layout delimiter="; ">
+      <text macro="full-entry" />
+    </layout>
+  </citation>
+  <bibliography>
+    <sort>
+      <key macro="type" />
+      <key macro="responsibility" />
+      <key macro="title" />
+      <!-- TODO Sortierung klären  -->
+    </sort>
+    <layout>
+      <text macro="full-entry" />
     </layout>
   </bibliography>
 </style>
