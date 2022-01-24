@@ -10,8 +10,10 @@
     <updated>2021-01-28T17:21:00+01:00</updated>
     <author>
       <name>Benjamin W. Bohl</name>
+      <email>bohl [at] em.uni-frankfurt.de</email>
+      <uri>https://zimmermann-gesamtausgabe.de/projekt/team/Z420097</uri>
     </author>
-    <!--<published>@@DATE.PUBLICATION@@</published>-->
+    <published>@DATE.PUBLICATION@</published>
     <rights>Veröffentlicht durch die Bernd Alois Zimmermann-Gesamtausgabe, gefördert im Akademienprogramm der Akademiunion unter Trägerschaft derder Akademie der Wissenschaften und der Literatur, Mainz und der Berlin-Brandenburgischen Akademie der Wissenschaften. All rights reserved.</rights>
     <summary>Der BAZ-GA Zitationsstil ist für die Ausgabe der Zotero-spezifischen Lieraturerfassungsrichtlinien der BAZ-GA entwickelt und unsterstützt derzeit folgende Zotero-Eintragsarten: Buch, Buchteil, Dissertation, Enzyklopädieartikel, Zeitschriftenartikel. Folgende Aspekte der BAZ-GA Richtlinien für Literaturangaben werden noch nicht unterstützt: - Fußnoten - Eigene Felder: -- editor-prefix -- editor-suffix - Auslassung des Autornamens bei von fremder Hand publizierten Werken, sofern der Autor zu Beginn des Titels der Publikation genannt wird. - Eintragstypen: -- Brief -- Manuskript -- Tonaufnahme -- Videoaufnahme -- Zeitungsartikel -- Webseite (nur rudimentär) Inhaltlich zu klären: - Sortierreihenfolge </summary>
     <category citation-format="note" />
