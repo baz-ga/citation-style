@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." name="bazga-csl">
+    <tstamp>
+        <format property="ant.tstamp.now.iso" pattern="yyyy-MM-dd'T'HH:mm:ssXXX"/>
+    </tstamp>
+    <exec command="git log -1 --pretty='format:%aI' src/bazga.csl" outputproperty="csl-mod.tstamp.iso"/>
+    <target name="props">
+        <echo message="${TSTAMP}"></echo>
+        <echo message="${DSTAMP}"></echo>
+        <echo message="${TODAY}"></echo>
+        <echo message="${ant.tstamp.now.iso}"></echo>
+        <echo message="${csl-mod.tstamp.iso}"></echo>
+    </target>
+    <target name="build" depends="clean">
+        <mkdir dir="build"/>
+        <copy todir="build" force="true" >
+            <file file="src/bazga.csl" />
+            <filterset begintoken="@" endtoken="@">
+                <filter token="DATE.PUBLICATION" value="${ant.tstamp.now.iso}"/>
+                <filter token="DATE.LAST-MOD" value="${csl-mod.tstamp.iso}"/>
+            </filterset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build"/>
+    </target>
+</project>
