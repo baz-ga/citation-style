@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="schema-1.0.1/csl.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-model href="schema-1.0.1/csl.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="../schema-1.0.1/csl.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="../schema-1.0.1/csl.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="note" default-locale="de-DE">
   <info>
     <title>BAZ-GA Citation Style</title>
