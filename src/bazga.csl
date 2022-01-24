@@ -7,7 +7,7 @@
     <id>http://www.bazga.de/schema/citation</id>
     <link href="https://github.com/baz-ga/citation-style/bazga.csl" rel="self" />
     <link href="https://github.com/baz-ga/citation-style/blob/master/docs/README.md" rel="documentation" />
-    <updated>2021-01-28T17:21:00+01:00</updated>
+    <updated>@DATE.LAST-MOD@</updated>
     <author>
       <name>Benjamin W. Bohl</name>
       <email>bohl [at] em.uni-frankfurt.de</email>
