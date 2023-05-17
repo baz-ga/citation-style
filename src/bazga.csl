@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="../schema-1.0.1/csl.rnc" type="application/relax-ng-compact-syntax"?>
-<?xml-model href="../schema-1.0.1/csl.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<?xml-model href="https://raw.githubusercontent.com/citation-style-language/schema/v1.0.2/schemas/styles/csl.rnc" type="application/relax-ng-compact-syntax"?>
+<?xml-model href="https://raw.githubusercontent.com/citation-style-language/schema/v1.0.2/schemas/styles/csl.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <style xmlns="http://purl.org/net/xbiblio/csl" version="1.0" class="note" default-locale="de-DE">
   <info>
     <title>BAZ-GA Citation Style</title>
@@ -46,7 +46,7 @@
       </if>-->
       <if variable="author">
         <names variable="author">
-          <name delimiter="; " form="long" name-as-sort-order="all" />
+          <name delimiter="; " form="long" />
         </names>
       </if>
       <!-- TODO klären ob o.A. Angabe nötig, wenn kein Herausgeber und kein Autor, falls nein ist ggf. macro nicht notwendig  -->
@@ -399,7 +399,7 @@
       <text macro="full-entry" />
     </layout>
   </citation>
-  <bibliography>
+  <bibliography name-as-sort-order="all">
     <sort>
       <key macro="type" />
       <key macro="responsibility" />
